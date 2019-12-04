@@ -26,12 +26,18 @@ class Model extends Koneksi
 
     public function tampil_data()
     {
+
         $sql = "select * from pengguna";
         $bind = $this->kon->query($sql);
-        while ($obj = $bind->fetch_object()) {
-            $baris[] = $obj;
+        $jml = mysqli_num_rows($bind);
+        if (mysqli_num_rows($bind) > 0) {
+            while ($obj = $bind->fetch_object()) {
+                $baris[] = $obj;
+            }
+            return $baris;
+        } else {
+            return $jml;
         }
-        return $baris;
     }
     public function edit($id)
     {
@@ -43,7 +49,7 @@ class Model extends Koneksi
         return $baris;
     }
 
-    public function update($nama, $umur, $tanggal_lahir, $jenis_kelamin,$id)
+    public function update($nama, $umur, $tanggal_lahir, $jenis_kelamin, $id)
     {
         $sql = "update pengguna set nama='$nama',umur='$umur',tanggal_lahir='$tanggal_lahir',jenis_kelamin='$jenis_kelamin' where id='$id'";
         $this->kon->query($sql);

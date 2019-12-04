@@ -42,10 +42,10 @@
             <h1>Data Pengguna</h1>
             <a href="../pengguna/create.php" class="btn btn-primary mb-2">Tambah Data</a>
             <?php
-                include  '../pengguna/model.php';
-                $model = new Model();
-                $data = $model->tampil_data();
-                $index = 1;
+            include  '../pengguna/model.php';
+            $model = new Model();
+            $data = $model->tampil_data();
+            $index = 1;
             ?>
 
             <table class="table">
@@ -60,19 +60,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data as $datas) : ?>
+                    <?php if ($data > 0) : ?>
+                        <?php foreach ($data as $datas) : ?>
+                            <tr>
+                                <td><?= $index++ ?></td>
+                                <td><?= $datas->nama ?></td>
+                                <td><?= $datas->umur ?></td>
+                                <td><?= $datas->tanggal_lahir ?></td>
+                                <td><?= $datas->jenis_kelamin ?></td>
+                                <td>
+                                    <a name="edit" id="edit" class="btn btn-primary" href="edit.php?id=<?= $datas->id ?>">Edit</a>
+                                    <a name="hapus" id="hapus" class="btn btn-danger" href="proses.php?id=<?= $datas->id ?>">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else : ?>
                         <tr>
-                            <td><?= $index++ ?></td>
-                            <td><?= $datas->nama ?></td>
-                            <td><?= $datas->umur ?></td>
-                            <td><?= $datas->tanggal_lahir ?></td>
-                            <td><?= $datas->jenis_kelamin ?></td>
-                            <td>
-                                <a name="edit" id="edit" class="btn btn-primary" href="edit.php?id=<?= $datas->id ?>">Edit</a>
-                                <a name="hapus" id="hapus" class="btn btn-danger" href="proses.php?id=<?= $datas->id ?>">Delete</a>
-                            </td>
+                            <td>Data Kosong</td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endif ?>
                 </tbody>
             </table>
         </div>
