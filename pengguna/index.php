@@ -45,6 +45,7 @@
             include  '../pengguna/model.php';
             $model = new Model();
             $data = $model->tampil_data();
+            $umur = $model->sumur();
             $index = 1;
             ?>
 

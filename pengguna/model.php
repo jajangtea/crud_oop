@@ -60,4 +60,14 @@ class Model extends Koneksi
         $sql = "delete from pengguna where id='$id'";
         $this->kon->query($sql);
     }
+
+    public function sumur()
+    {
+        $sql = "select sum(umur) as umur  from pengguna";
+        $bind = $this->kon->query($sql);
+        while ($obj = $bind->fetch_object()) {
+            $umur = $obj->umur;
+        }
+        return $umur;
+    }
 }
