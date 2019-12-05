@@ -27,6 +27,8 @@ class Model extends Koneksi
     {
         $sql = "select * from pengguna";
         $bind = $this->kon->query($sql);
+        $jml_baris=$bind->num_rows;
+       
         while ($obj = $bind->fetch_object()) {
             $baris[] = $obj;
         }
@@ -52,5 +54,25 @@ class Model extends Koneksi
     {
         $sql = "delete from pengguna where id='$id'";
         $this->kon->query($sql);
+    }
+
+    public function sumur()
+    {
+        $sql = "select sum(umur) as umur  from pengguna";
+        $bind = $this->kon->query($sql);
+        while ($obj = $bind->fetch_object()) {
+            $umur = $obj->umur;
+        }
+        return $umur;
+    }
+
+    public function avg_umur(){
+        $sql="select avg(umur) as avg_umur   from pengguna";
+        $bind=$this->kon->query($sql);
+        while ($obj=$bind->fetch_object()) {
+            $avg_umur=$obj->avg_umur;
+        }
+
+        return $avg_umur;
     }
 }

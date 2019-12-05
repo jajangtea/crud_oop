@@ -20,14 +20,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jajang Nurjaman</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         <a class="dropdown-item" href="#">Account</a>
-                        <a class="dropdown-item" href="#">Logout 2</a>
+                        <a class="dropdown-item" href="#">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -45,7 +42,9 @@
             include  '../pengguna/model.php';
             $model = new Model();
             $data = $model->tampil_data();
-            $umur = $model->sumur();
+            echo "jml umur :". $umur = $model->sumur();
+            echo "avg umur :". $avg_umur = $model->avg_umur();
+           
             $index = 1;
             ?>
 
