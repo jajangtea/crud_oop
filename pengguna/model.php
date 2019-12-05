@@ -7,7 +7,6 @@ class Model extends Koneksi
         $this->kon = $this->get_koneksi();
     }
 
-
     public function aksi_simpan()
     {
         if (isset($_POST['submit'])) {
@@ -43,7 +42,7 @@ class Model extends Koneksi
         return $baris;
     }
 
-    public function update($nama, $umur, $tanggal_lahir, $jenis_kelamin,$id)
+    public function update($nama, $umur, $tanggal_lahir, $jenis_kelamin, $id)
     {
         $sql = "update pengguna set nama='$nama',umur='$umur',tanggal_lahir='$tanggal_lahir',jenis_kelamin='$jenis_kelamin' where id='$id'";
         $this->kon->query($sql);
