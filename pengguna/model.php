@@ -25,18 +25,12 @@ class Model extends Koneksi
 
     public function tampil_data()
     {
-
         $sql = "select * from pengguna";
         $bind = $this->kon->query($sql);
-        $jml = mysqli_num_rows($bind);
-        if (mysqli_num_rows($bind) > 0) {
-            while ($obj = $bind->fetch_object()) {
-                $baris[] = $obj;
-            }
-            return $baris;
-        } else {
-            return $jml;
+        while ($obj = $bind->fetch_object()) {
+            $baris[] = $obj;
         }
+        return $baris;
     }
     public function edit($id)
     {
@@ -58,15 +52,5 @@ class Model extends Koneksi
     {
         $sql = "delete from pengguna where id='$id'";
         $this->kon->query($sql);
-    }
-
-    public function sumur()
-    {
-        $sql = "select sum(umur) as umur  from pengguna";
-        $bind = $this->kon->query($sql);
-        while ($obj = $bind->fetch_object()) {
-            $umur = $obj->umur;
-        }
-        return $umur;
     }
 }
